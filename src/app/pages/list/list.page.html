@@ -2,53 +2,60 @@
 
 <ion-content>
 
-    <ion-list>
+    <ion-list #lista>
 
-        <ion-item>
+        <ion-item-sliding *ngFor="let usuario of usuarios | async">
 
-            <ion-label>
+            <ion-item>
+                
+                <ion-label>
+    
+                    <h3>
+                        {{ usuario.name }}
+                    </h3>
+    
+                    <p>
+                        {{ usuario.email }}
+                    </p>
+    
+                </ion-label>
+    
+                <ion-label 
+                    slot="end"
+                    class="ion-text-right"
+                >
+                    {{ usuario.phone }}
+                </ion-label>
+    
+            </ion-item>
 
-                <h3>
-                    Nombre
-                </h3>
+            <ion-item-options side="start">
 
-                <p>
-                    Hola Mundo
-                </p>
+                <ion-item-option (click)="favorite(usuario)">
+                    <ion-icon slot="icon-only" name="heart"></ion-icon>
+                </ion-item-option>
 
-            </ion-label>
+                <ion-item-option
+                    color="secondary"
+                    (click)="share(usuario)"
+                >
+                    <ion-icon slot="icon-only" name="share"></ion-icon>
+                </ion-item-option>
 
-            <ion-label 
-                slot="end"
-                class="ion-text-right"
-            >
-                9484351232
-            </ion-label>
+            </ion-item-options>
 
-        </ion-item>
+            <ion-item-options side="end">
 
-        <ion-item *ngFor="let usuario of usuarios | async">
-            
-            <ion-label>
+                <ion-item-option
+                    color="danger"
+                    (click)="unread(usuario)"
+                >
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
 
-                <h3>
-                    {{ usuario.name }}
-                </h3>
+            </ion-item-options>
 
-                <p>
-                    {{ usuario.email }}
-                </p>
-
-            </ion-label>
-
-            <ion-label 
-                slot="end"
-                class="ion-text-right"
-            >
-                {{ usuario.phone }}
-            </ion-label>
-
-        </ion-item>
+        </ion-item-sliding>
 
     </ion-list>
 
