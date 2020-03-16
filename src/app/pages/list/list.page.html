@@ -1,0 +1,55 @@
+<app-header [titulo]="'Listas - Sliding'"></app-header>
+
+<ion-content>
+
+    <ion-list>
+
+        <ion-item>
+
+            <ion-label>
+
+                <h3>
+                    Nombre
+                </h3>
+
+                <p>
+                    Hola Mundo
+                </p>
+
+            </ion-label>
+
+            <ion-label 
+                slot="end"
+                class="ion-text-right"
+            >
+                9484351232
+            </ion-label>
+
+        </ion-item>
+
+        <ion-item *ngFor="let usuario of usuarios | async">
+            
+            <ion-label>
+
+                <h3>
+                    {{ usuario.name }}
+                </h3>
+
+                <p>
+                    {{ usuario.email }}
+                </p>
+
+            </ion-label>
+
+            <ion-label 
+                slot="end"
+                class="ion-text-right"
+            >
+                {{ usuario.phone }}
+            </ion-label>
+
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>
