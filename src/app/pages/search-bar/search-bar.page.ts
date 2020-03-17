@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Album } from 'src/app/interfaces/interfaces';
+import { concatAll, tap, mergeAll, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -23,7 +24,16 @@ export class SearchBarPage implements OnInit {
   }
 
   buscar(e: CustomEvent) {
-    console.log(e);
+    this.albumes = [];
+    this
+      .dataService
+      .getAlbums()
+      .pipe(
+        concatAll(),
+        filter((album: Album) => album.title.startsWith(e.detail.value)),
+        tap(album => this.albumes.push(album))
+      )
+      .subscribe();
   }
 
 }
