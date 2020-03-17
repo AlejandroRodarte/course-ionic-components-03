@@ -9,3 +9,11 @@ export interface Album {
     id: number;
     title: string;
 }
+
+export interface Hero {
+    superhero: string;
+    publisher: string;
+    alter_ego: string;
+    first_appearance: string;
+    characters: string;
+}

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { Componente, Album } from './../interfaces/interfaces';
+import { Hero } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class DataService {
 
   getAlbums(): Observable<Album[]> {
     return this.http.get<Album[]>('https://jsonplaceholder.typicode.com/albums');
+  }
+
+  getHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>('/assets/data/superheroes.json');
   }
 
 }
