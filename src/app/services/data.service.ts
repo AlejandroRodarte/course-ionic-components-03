@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
-import { Componente } from './../interfaces/interfaces';
+import { Componente, Album } from './../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ export class DataService {
 
   getMenuOptions(): Observable<Componente[]> {
     return this.http.get<Componente[]>('/assets/data/menu.json');
+  }
+
+  getAlbums(): Observable<Album[]> {
+    return this.http.get<Album[]>('https://jsonplaceholder.typicode.com/albums');
   }
 
 }
