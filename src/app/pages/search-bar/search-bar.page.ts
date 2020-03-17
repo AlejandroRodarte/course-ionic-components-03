@@ -11,6 +11,7 @@ import { concatAll, tap, mergeAll, filter } from 'rxjs/operators';
 export class SearchBarPage implements OnInit {
 
   public albumes: Album[] = [];
+  public textoBuscar = '';
 
   constructor(
     private dataService: DataService
@@ -24,16 +25,7 @@ export class SearchBarPage implements OnInit {
   }
 
   buscar(e: CustomEvent) {
-    this.albumes = [];
-    this
-      .dataService
-      .getAlbums()
-      .pipe(
-        concatAll(),
-        filter((album: Album) => album.title.startsWith(e.detail.value)),
-        tap(album => this.albumes.push(album))
-      )
-      .subscribe();
+    this.textoBuscar = e.detail.value;
   }
 
 }
