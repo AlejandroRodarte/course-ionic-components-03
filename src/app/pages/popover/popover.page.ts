@@ -16,13 +16,20 @@ export class PopoverPage implements OnInit {
   ngOnInit() {
   }
 
-  async presentPopover() {
+  async presentPopover(event: Event) {
 
     const popover = await this.popoverController.create({
-      component: PopinfoComponent
+      component: PopinfoComponent,
+      event,
+      mode: 'ios',
+      backdropDismiss: false
     });
 
     await popover.present();
+
+    const { data } = await popover.onDidDismiss();
+
+    console.log('datos del popinfo: ', data);
 
   }
 
