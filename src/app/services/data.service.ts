@@ -4,6 +4,7 @@ import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { Componente, Album } from './../interfaces/interfaces';
 import { Hero } from '../interfaces/interfaces';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class DataService {
   }
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>('/assets/data/superheroes.json');
+    return this.http.get<Hero[]>('/assets/data/superheroes.json').pipe(delay(2000));
   }
 
 }
