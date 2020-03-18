@@ -17,3 +17,9 @@ export interface Hero {
     first_appearance: string;
     characters: string;
 }
+
+export interface Slide { 
+    img: string;
+    titulo: string;
+    desc: string;
+}
